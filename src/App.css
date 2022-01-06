@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );
+  grid-gap: 1rem;
+}
+
+.boxes {
+  border: 1px solid black;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.boxes > img {
+  border-radius: 10px;
+}
