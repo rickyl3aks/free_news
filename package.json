@@ -20,6 +20,7 @@
   },
   "homepage": "https://rickyl3aks.github.io/free_news",
   "scripts": {
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
