@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -7,22 +5,52 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  background-color: #868080;
+}
+
+.input {
+  margin: 2rem auto;
+}
+
+.scrollUp {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  text-align: center;
+  width: 4em;
+  z-index: 1;
+  height: 4em;
+}
+
+.scrollUp::after {
+  content: "";
+  display: inline-block;
+  margin-top: 0.8rem;
+  width: 0.5em;
+  height: 0.5em;
+  border-top: 0.3em solid #181717;
+  border-right: 0.3em solid #181717;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.scrollUp:hover {
+  cursor: pointer;
+}
+
+.scrollUp:hover::after {
+  border-top: 0.3rem solid #c42a2a;
+  border-right: 0.3rem solid #c42a2a;
 }
 
 .container {
   margin: 1rem;
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
 }
 
-.boxes {
-  border: 1px solid black;
-  padding: 1rem;
-  overflow: hidden;
-}
-
-.boxes > img {
-  border-radius: 10px;
+.btn:hover {
+  cursor: default;
 }
