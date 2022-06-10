@@ -1,2 +1,3 @@
-News Data: structured, relevant, real-time
-Search multi-language worldwide news articles published online with NewsCatcher's News API
+Free app news 📰
+
+-- POWERING by <a href="https://newscatcherapi.com/">NewsCatcher's News API</a> --
