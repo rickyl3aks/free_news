@@ -2,7 +2,6 @@ import "./App.css";
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import { TabScrollButton } from "@mui/material";
 import { Link } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -16,10 +15,12 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import Footer from "./footer";
+import Articles from "./Articles";
 
 const App = () => {
   const [type, setType] = useState("");
   const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const changeNews = (news) => {
     const options = {
@@ -89,12 +90,12 @@ const App = () => {
         <IconButton color="primary" sx={{ p: "10px" }}></IconButton>
       </Paper>
 
-      {/*       <div
+      <div
         onClick={scrollToTop}
         className="scrollUp"
         style={{ display: visible ? "inline" : "none" }}
-      ></div> */}
-      <TabScrollButton
+      ></div>
+      {/* <TabScrollButton
         onClick={scrollToTop}
         style={{ display: visible ? "inline" : "none" }}
         direction="left"
@@ -107,33 +108,53 @@ const App = () => {
           bottom: "1rem",
           zIndex: 1,
         }}
-      />
+      /> */}
 
       <div className="container">
-        {type.articles !== undefined ? (
+        {type.articles?.length > 0 ? (
           type.articles.map((e) => {
             return (
-              <div key={e.id + e.link} className="boxes">
-                <Card style={{ height: "50rem", position: "relative" }}>
+              <div key={e._id} className="boxes">
+                <Card
+                  key={e._id}
+                  style={{
+                    position: "relative",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    setOpen(!open);
+                  }}
+                >
                   <CardMedia
                     style={{ height: "15rem", objectPosition: "top" }}
                     component="img"
                     image={e.media}
                     alt={e.title}
                   />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {e.title}
-                    </Typography>
-
-                    <Typography variant="body2" color="text.secondary">
-                      {e.summary}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    style={{ margin: ".5rem" }}
+                  >
+                    {e.title}
+                  </Typography>
+                  <Articles id={e._id} summary={e.summary} open={open} />
+                  {/*  <CardContent id={e._id}>
+                    <div
+                      style={{
+                        display: open ? "inline" : "none",
+                      }}
+                    >
+                      <Typography variant="body2" color="text.secondary">
+                        {e.summary}
+                      </Typography>
+                    </div>
+                  </CardContent> */}
+                  <CardActions style={{ margin: ".5rem 0" }}>
                     <Button
                       size="small"
-                      style={{ position: "absolute", bottom: 0 }}
+                      style={{ position: "absolute", bottom: 0, left: 5 }}
                     >
                       <Link href={e.link} target="_blank" underline="none">
                         Read More
@@ -142,7 +163,7 @@ const App = () => {
 
                     <Button
                       className="btn"
-                      style={{ position: "absolute", bottom: 0, right: 0 }}
+                      style={{ position: "absolute", bottom: 0, right: 5 }}
                     >
                       {moment(e.published_date).startOf("hour").fromNow()}
                     </Button>
