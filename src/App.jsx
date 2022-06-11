@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Link } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -20,7 +19,7 @@ import Articles from "./Articles";
 const App = () => {
   const [type, setType] = useState("");
   const [visible, setVisible] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState("");
 
   const changeNews = (news) => {
     const options = {
@@ -122,7 +121,8 @@ const App = () => {
                     cursor: "pointer",
                   }}
                   onClick={() => {
-                    setOpen(!open);
+                    setOpen(e._id);
+                    setVisible(!visible);
                   }}
                 >
                   <CardMedia
@@ -139,7 +139,12 @@ const App = () => {
                   >
                     {e.title}
                   </Typography>
-                  <Articles id={e._id} summary={e.summary} open={open} />
+                  <Articles
+                    id={e._id}
+                    summary={e.summary}
+                    open={open}
+                    visible={visible}
+                  />
                   {/*  <CardContent id={e._id}>
                     <div
                       style={{
