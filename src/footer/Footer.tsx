@@ -1,11 +1,12 @@
-import React from "react";
+import * as React from "react";
 import { Link } from "@material-ui/core";
 import { Typography } from "@mui/material";
-import "./footer.css";
+import "./Footer.css";
+import { types } from "../models/models";
 
-const footer = ({ type }) => {
+const footer: React.FC<types> = ({ type }) => {
   return (
-    <div className={type.status === "ok" ? "footer" : "footerBtn"}>
+    <div className={type === "ok" ? "footer" : "footerBtn"}>
       <Typography variant="h5">
         This website made possible by{" "}
         <Link
