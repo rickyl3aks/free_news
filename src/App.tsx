@@ -76,9 +76,10 @@ const App = () => {
           alignItems: "center",
           width: 300,
         }}
-        onKeyDown={(e: any) => {
+        onKeyDown={(e: React.KeyboardEvent) => {
           if (e.key === "Enter") {
-            changeNews(e.target.value);
+            const result = (e.target as HTMLInputElement).value;
+            changeNews(result);
           }
         }}
       >
