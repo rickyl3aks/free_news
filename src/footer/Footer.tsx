@@ -8,7 +8,7 @@ const footer: React.FC<types> = ({ type }) => {
   return (
     <div className={type === "ok" ? "footer" : "footerBtn"}>
       <Typography variant="h5">
-        This website made possible by{" "}
+        This website is made possible by{" "}
         <Link
           href="https://newscatcherapi.com/"
           target="_blank"
