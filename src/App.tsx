@@ -1,6 +1,5 @@
 import "./App.css";
 import * as React from "react";
-import axios from "axios";
 import { useState } from "react";
 import { Link } from "@mui/material";
 import Card from "@mui/material/Card";
@@ -13,17 +12,18 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import { ChangeNews } from "./api/changeNews";
 import Footer from "./footer/Footer";
 import Articles from "./articles/Articles";
 import { mapping } from "./models/models";
 
 const App = () => {
-  const [type, setType] = useState(Object);
+  const [type, setType] = useState("");
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState("");
   const [articles, setArticles] = useState(false);
 
-  const changeNews = (news: string) => {
+  /*   const changeNews = (news: string) => {
     const options: object = {
       method: "GET",
       url: "https://free-news.p.rapidapi.com/v1/search",
@@ -42,7 +42,7 @@ const App = () => {
       .catch(function (error) {
         console.error(error);
       });
-  };
+  }; */
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -62,6 +62,8 @@ const App = () => {
 
   window.addEventListener("scroll", toggleVisible);
 
+  const { data, loading, error } = ChangeNews(type);
+
   return (
     <div>
       <Typography style={{ margin: "2rem" }} variant="h5" align="center">
@@ -79,7 +81,9 @@ const App = () => {
         onKeyDown={(e: React.KeyboardEvent) => {
           if (e.key === "Enter") {
             const result = (e.target as HTMLInputElement).value;
-            changeNews(result);
+            setType(result);
+          } else {
+            return null;
           }
         }}
       >
@@ -113,8 +117,8 @@ const App = () => {
       /> */}
 
       <div className="container">
-        {type.articles?.length > 0
-          ? type.articles.map((e: mapping) => {
+        {data.articles?.length > 0
+          ? data.articles.map((e: mapping) => {
               return (
                 <div key={e._id} className="boxes">
                   <Card
@@ -180,13 +184,13 @@ const App = () => {
                 </div>
               );
             })
-          : Object.values(type)[0] === "No matches for your search." && (
+          : Object.values(data)[0] === "No matches for your search." && (
               <Typography variant="h5" color="white" align="center">
                 Sorry we didn't find anything 😥, try again{" "}
               </Typography>
             )}
       </div>
-      <Footer type={type.status} />
+      <Footer type={data.status} />
     </div>
   );
 };
