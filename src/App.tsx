@@ -135,7 +135,11 @@ const App = () => {
                     <CardMedia
                       style={{ height: "15rem", objectPosition: "top" }}
                       component="img"
-                      image={e.media}
+                      image={
+                        ![null, ""].includes(e.media)
+                          ? e.media
+                          : require("./images/placeholder_news.jpeg")
+                      }
                       alt={e.title}
                     />
                     <Typography
