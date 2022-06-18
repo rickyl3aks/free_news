@@ -2,6 +2,10 @@ export interface types {
   type: string | object;
 }
 
+export interface data {
+  data: object;
+}
+
 export interface mapping {
   _id: string;
   summary: string;
@@ -14,6 +18,8 @@ export interface mapping {
 export interface Article {
   id: string;
   summary: string;
-  open: string;
-  visible: boolean;
+  link: string;
+  title: string;
+  media: string;
+  published: string;
 }
