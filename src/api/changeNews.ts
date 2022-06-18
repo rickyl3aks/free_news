@@ -3,12 +3,12 @@ import axios from "axios";
 
 export const ChangeNews = (news: string) => {
   const [data, setData] = useState(Object);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
     if (news) {
-      setLoading(true);
+      setIsLoading(true);
       const options: object = {
         method: "GET",
         url: "https://free-news.p.rapidapi.com/v1/search",
@@ -24,13 +24,13 @@ export const ChangeNews = (news: string) => {
         .request(options)
         .then(function (response) {
           setData(response.data);
-          setLoading(false);
+          setIsLoading(false);
         })
         .catch(function (error) {
-          setError(error);
+          setIsError(error);
         });
     }
   }, [news]);
 
-  return { data, loading, error };
+  return { data, isLoading, isError };
 };
