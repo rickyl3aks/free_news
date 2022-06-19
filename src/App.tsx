@@ -10,6 +10,7 @@ import { ChangeNews } from "./api/changeNews";
 import Articles from "./articles/Articles";
 import { NoResult } from "./no_result/NoResult";
 import { SearchTab } from "./search_tab/SearchTab";
+import { Loading } from "./loading/Loading";
 import Footer from "./footer/Footer";
 import { mapping } from "./models/models";
 
@@ -37,14 +38,19 @@ const App = () => {
 
   const { data, isLoading, isError } = ChangeNews(type);
 
-  if (isLoading) {
+  if (!isLoading) {
+    let recLoading = [];
+    for (let n = 1; n <= 4; n++) {
+      recLoading.push(n);
+    }
     return (
       <div>
         <SearchTab />
         {/*--- working on it ---*/}
-        <Typography style={{ margin: "2rem" }} variant="h5" align="center">
-          Loading...
-        </Typography>
+
+        {recLoading.map(() => (
+          <Loading />
+        ))}
       </div>
     );
   }
