@@ -38,7 +38,7 @@ const App = () => {
 
   const { data, isLoading, isError } = ChangeNews(type);
 
-  if (!isLoading) {
+  if (isLoading) {
     let recLoading = [];
     for (let n = 1; n <= 4; n++) {
       recLoading.push(n);
