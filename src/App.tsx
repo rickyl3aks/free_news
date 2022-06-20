@@ -48,8 +48,8 @@ const App = () => {
         <SearchTab />
         {/*--- working on it ---*/}
 
-        {recLoading.map(() => (
-          <Loading />
+        {recLoading.map((e) => (
+          <Loading key={"key_" + e} />
         ))}
       </div>
     );
