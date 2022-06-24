@@ -3,7 +3,7 @@ import { Skeleton } from "@mui/material";
 import { Card } from "@mui/material";
 
 export const Loading = () => {
-  let skeleton = [];
+  let skeleton: number[] = [];
   for (let n: number = 1; n <= 2; n++) {
     skeleton.push(n);
   }
