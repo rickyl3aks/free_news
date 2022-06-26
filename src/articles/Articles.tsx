@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import { CardMedia } from "@mui/material";
 import { Link } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import * as moment from "moment";
 import { Article } from "../models/models";
@@ -111,11 +110,11 @@ const Articles: React.FC<Article> = ({
             color: "#1976d2",
             position: "absolute",
             right: ".5rem",
-            bottom: 0
+            bottom: 0,
           }}
         >
           {moment(published).startOf("hour").fromNow()}
-          </Typography>
+        </Typography>
       </Card>
     </div>
   );
