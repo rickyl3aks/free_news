@@ -17,6 +17,8 @@ const Articles: React.FC<Article> = ({
   link,
   media,
   published,
+  author,
+  rights,
 }) => {
   const [open, setOpen] = useState("");
   const [articles, setArticles] = useState(false);
@@ -65,6 +67,11 @@ const Articles: React.FC<Article> = ({
           >
             {summary}
           </Typography>
+          <Button size="small" style={{ margin: ".3rem" }}>
+            <Link href={link} target="_blank" underline="none">
+              Read More...
+            </Link>
+          </Button>
         </CardContent>
         {/*  <CardContent id={e._id}>
                     <div
@@ -77,23 +84,38 @@ const Articles: React.FC<Article> = ({
                       </Typography>
                     </div>
                   </CardContent> */}
-        <CardActions style={{ margin: ".5rem 0" }}>
-          <Button
-            size="small"
-            style={{ position: "absolute", bottom: 0, left: 5 }}
+        {author && (
+          <Typography
+            variant="subtitle2"
+            mt={10}
+            style={{
+              color: "#1976d2",
+              margin: "0 .5rem",
+            }}
           >
-            <Link href={link} target="_blank" underline="none">
-              Read More
-            </Link>
-          </Button>
-
-          <Button
-            className="btn"
-            style={{ position: "absolute", bottom: 0, right: 5 }}
-          >
-            {moment(published).startOf("hour").fromNow()}
-          </Button>
-        </CardActions>
+            Written by {author}
+          </Typography>
+        )}
+        <Typography
+          variant="subtitle2"
+          style={{
+            color: "#1976d2",
+            margin: "0 .5rem",
+          }}
+        >
+          Issued {rights}
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          style={{
+            color: "#1976d2",
+            position: "absolute",
+            right: ".5rem",
+            bottom: 0
+          }}
+        >
+          {moment(published).startOf("hour").fromNow()}
+          </Typography>
       </Card>
     </div>
   );

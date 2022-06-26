@@ -13,6 +13,8 @@ export interface mapping {
   title: string;
   link: string;
   published_date: string;
+  author: string;
+  rights: string;
 }
 
 export interface Article {
@@ -22,4 +24,6 @@ export interface Article {
   title: string;
   media: string;
   published: string;
+  author: string;
+  rights: string;
 }

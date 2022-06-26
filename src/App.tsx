@@ -85,8 +85,6 @@ const App = () => {
           if (e.key === "Enter") {
             const result = (e.target as HTMLInputElement).value;
             setType(result);
-          } else {
-            return null;
           }
         }}
       >
@@ -131,6 +129,8 @@ const App = () => {
                   published={e.published_date}
                   link={e.link}
                   title={e.title}
+                  author={e.author}
+                  rights={e.rights}
                 />
               </div>
             );
