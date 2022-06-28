@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import { CardMedia } from "@mui/material";
 import { Link } from "@mui/material";
-import Button from "@mui/material/Button";
 import * as moment from "moment";
 import { Article } from "../models/models";
 
@@ -65,12 +64,11 @@ const Articles: React.FC<Article> = ({
             style={{ margin: ".5rem" }}
           >
             {summary}
-          </Typography>
-          <Button size="small" style={{ margin: ".3rem" }}>
-            <Link href={link} target="_blank" underline="none">
+            <Link href={link} target="_blank" underline="hover">
+              {" "}
               Read More...
             </Link>
-          </Button>
+          </Typography>
         </CardContent>
         {/*  <CardContent id={e._id}>
                     <div
@@ -83,27 +81,35 @@ const Articles: React.FC<Article> = ({
                       </Typography>
                     </div>
                   </CardContent> */}
-        {author && (
+        <div
+          style={{
+            borderLeft: ".3rem solid black",
+            marginLeft: 8,
+            marginBottom: 5,
+          }}
+        >
+          {author && (
+            <Typography
+              variant="subtitle2"
+              mt={10}
+              style={{
+                color: "#1976d2",
+                margin: "0 .5rem",
+              }}
+            >
+              {author}
+            </Typography>
+          )}
           <Typography
             variant="subtitle2"
-            mt={10}
             style={{
               color: "#1976d2",
               margin: "0 .5rem",
             }}
           >
-            Written by {author}
+            {rights}
           </Typography>
-        )}
-        <Typography
-          variant="subtitle2"
-          style={{
-            color: "#1976d2",
-            margin: "0 .5rem",
-          }}
-        >
-          Issued {rights}
-        </Typography>
+        </div>
         <Typography
           variant="subtitle2"
           style={{
