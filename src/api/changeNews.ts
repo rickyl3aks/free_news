@@ -14,8 +14,8 @@ export const ChangeNews = (news: string) => {
         url: "https://free-news.p.rapidapi.com/v1/search",
         params: { q: news, lang: "en" },
         headers: {
-          "x-rapidapi-host": "free-news.p.rapidapi.com",
-          "x-rapidapi-key": process.env.REACT_APP_API_KEY,
+          "X-RapidAPI-Host": "free-news.p.rapidapi.com",
+          "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
         },
       };
 
